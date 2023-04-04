@@ -4,10 +4,7 @@ from keys import OPENAI_API_KEY
 
 def getFilm(prompt):
     openai.api_key = OPENAI_API_KEY
-    #prompt = 'Soviet film about contrabandists that tries to bring diamonds'
     context = 'You cant say nothing but the name of the following film'
-
-
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
@@ -15,7 +12,6 @@ def getFilm(prompt):
             {"role": "user", "content": prompt},
         ]
     )
-
     result = ''
     for choice in response.choices:
         result += choice.message.content

@@ -10,10 +10,13 @@ def start(message):
         bot.send_message(message.from_user.id, "Type the description")
         bot.register_next_step_handler(message, get_description)
     else:
-        bot.send_message(message.from_user.id, 'To ask about film type /ask')
+        bot.send_message(message.from_user.id, 'To ask about film type /ask. Type /back to exit.')
 
 def get_description(message):
-    bot.send_message(message.from_user.id, ai.getFilm(message.text))
+    if message.text == '/back':
+        pass
+    else:
+        bot.send_message(message.from_user.id, ai.getFilm(message.text))
 
 while (1):
     try:
